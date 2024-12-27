@@ -35,12 +35,15 @@ function hss
 }
 
 alias vim=nvim
-alias cd=z
+#alias cd=z
 alias lg=lazygit
 alias s="kitten ssh"
 alias ssh="kitten ssh"
-alias conda='micromamba'
+# alias conda='micromamba'
 
-export MAMBA_ROOT_PREFIX=/home/jerrita/.micromamba
+#export MAMBA_ROOT_PREFIX=/home/jerrita/.micromamba
 export EDITOR=nvim
-eval "$(micromamba shell hook --shell zsh)"
+#eval "$(micromamba shell hook --shell zsh)"
+
+export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
