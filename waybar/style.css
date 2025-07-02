@@ -2,7 +2,7 @@
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: "JetBrains Mono", "Font Awesome 6 Free";
     font-weight: 500;
-    font-size: 13px;
+    font-size: 14px;
     text-shadow: none;
     
     transition-property: background;
@@ -127,10 +127,5 @@ tooltip {
 
 #window {
     background-color: #d3e4c9;
-    color: #000000;
-}
-
-#battery {
-    background-color: transparent;
     color: #000000;
 }

@@ -7,14 +7,14 @@
     "margin-right": 0,
     "margin-bottom": 0,
     "height": " ",
-    "modules-left": ["cpu", "memory", "hyprland/window"],
+    "modules-left": ["hyprland/window"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["tray", "battery", "pulseaudio", "network", "clock"],
+    "modules-right": ["tray", "pulseaudio", "network", "memory", "cpu", "clock"],
 
     "hyprland/workspaces": {
         "format": "{name}",
         "persistent-workspaces": {
-            "*": 5
+            "*": 8
         },
         "on-click": "activate",
         "on-scroll-up": "hyprctl dispatch workspace e-1",
@@ -30,8 +30,8 @@
     },
     "clock": {
         "interval": 1,
-        "format": "\uf133 {:%m-%d %H:%M:%S}",
-        "format-alt": "\uf133 {%Y-%m-%d %H:%M:%S}",
+        "format": "\uf017 {:%H:%M:%S}",
+        "format-alt": "\uf133 {:%Y-%m-%d %H:%M:%S}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode"          : "month",
@@ -67,12 +67,12 @@
     },
     "network": {
         "interval": 1,
-        "format-wifi": "\uf1eb {essid}",
-        "format-ethernet": "\uf6ff",
+        "format-wifi": "\uf1eb {essid} ({signalStrength}%)",
+        "format-ethernet": "\uf6ff {ifname}",
         "format-linked": "\uf059 No IP ({ifname})",
         "format-disconnected": "\uf071 Disconnected",
         "tooltip-format": "{ifname} {ipaddr}/{cidr} via {gwaddr}",
-        "tooltip-format-wifi": "{ipaddr}/{cidr} via {gwaddr} ({signalStrength}%)"
+        "format-alt": "\uf6ff {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         "scroll-step": 5,
@@ -85,16 +85,5 @@
         },
         "on-click-right": "pavucontrol",
         "ignored-sinks": ["AudioRelay Virtual Sink", "Recorder Sink"]
-    },
-    "battery": {
-		   "interval": 1,
-		   "states": {
-        	   	     "warning": 40,
-        		     "critical": 7
-		   },
-		   "format": "󱐌{capacity}%",
-           "format-discharging": "{power:02.2f}w {capacity}%",
-		   "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-		   "max-length": 25
-	},
+    }
 }
