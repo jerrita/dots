@@ -7,14 +7,14 @@
     "margin-right": 0,
     "margin-bottom": 0,
     "height": " ",
-    "modules-left": ["hyprland/window"],
+    "modules-left": ["cpu", "memory", "hyprland/window"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["tray", "pulseaudio", "network", "memory", "cpu", "clock"],
+    "modules-right": ["tray", "battery", "pulseaudio", "network", "clock"],
 
     "hyprland/workspaces": {
         "format": "{name}",
         "persistent-workspaces": {
-            "*": 8
+            "*": 4
         },
         "on-click": "activate",
         "on-scroll-up": "hyprctl dispatch workspace e-1",
@@ -67,13 +67,24 @@
     },
     "network": {
         "interval": 1,
-        "format-wifi": "\uf1eb {essid} ({signalStrength}%)",
+        "format-wifi": "\uf1eb {essid}",
         "format-ethernet": "\uf6ff {ifname}",
         "format-linked": "\uf059 No IP ({ifname})",
         "format-disconnected": "\uf071 Disconnected",
         "tooltip-format": "{ifname} {ipaddr}/{cidr} via {gwaddr}",
-        "format-alt": "\uf6ff {ipaddr}/{cidr}"
+        "tooltip-format-wifi": "{ipaddr}/{cidr} via {gwaddr} ({signalStrength}%)"
     },
+    "battery": {
+		   "interval": 1,
+		   "states": {
+        	   	     "warning": 40,
+        		     "critical": 7
+		   },
+		   "format": "󱐌{capacity}%",
+           "format-discharging": "{power:02.2f}w {capacity}%",
+		   "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+		   "max-length": 25
+	},
     "pulseaudio": {
         "scroll-step": 5,
         "format": "{icon} {volume:2}%",

@@ -35,7 +35,7 @@ function hss
 }
 
 alias vim=nvim
-alias cd=z
+# alias cd=z
 alias lg=lazygit
 alias s="kitten ssh"
 alias ssh="kitten ssh"

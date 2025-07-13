@@ -129,3 +129,8 @@ tooltip {
     background-color: #d3e4c9;
     color: #000000;
 }
+
+#battery {
+    background-color: transparent;
+    color: #000000;
+}
