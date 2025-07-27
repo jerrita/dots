@@ -6,15 +6,16 @@
     "margin-left": 0,
     "margin-right": 0,
     "margin-bottom": 0,
-    "height": " ",
-    "modules-left": ["cpu", "memory", "hyprland/window"],
+    "modules-left": ["cpu", "memory", "network", "hyprland/window"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["tray", "battery", "pulseaudio", "network", "clock"],
+    "modules-right": ["tray", "battery", "pulseaudio", "network#speed", "clock"],
 
     "hyprland/workspaces": {
         "format": "{name}",
         "persistent-workspaces": {
-            "*": 4
+            "DP-1": [1, 2, 3, 4],
+            "HDMI-A-1": [5, 6, 7],
+            "eDP-1": [8, 9, 10]
         },
         "on-click": "activate",
         "on-scroll-up": "hyprctl dispatch workspace e-1",
@@ -73,6 +74,13 @@
         "format-disconnected": "\uf071 Disconnected",
         "tooltip-format": "{ifname} {ipaddr}/{cidr} via {gwaddr}",
         "tooltip-format-wifi": "{ipaddr}/{cidr} via {gwaddr} ({signalStrength}%)"
+    },
+    "network#speed": {
+        "interval": 1,
+        "format": "\uf0aa{bandwidthUpBytes:>} \uf0ab{bandwidthDownBytes:>}",
+        "tooltip-format": "Upload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}",
+        "max-length": 22,
+        "min-length": 22
     },
     "battery": {
 		   "interval": 1,
