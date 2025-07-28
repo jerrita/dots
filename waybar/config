@@ -1,14 +1,15 @@
 {
     "layer": "top",
-    "position": "top",  
-    "spacing": 6,
+    "position": "top",
+    "height": 34,
+    "spacing": 2,
     "margin-top": 0,
     "margin-left": 0,
     "margin-right": 0,
     "margin-bottom": 0,
-    "modules-left": ["cpu", "memory", "network", "hyprland/window"],
+    "modules-left": ["cpu", "memory", "hyprland/window"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["tray", "battery", "pulseaudio", "network#speed", "clock"],
+    "modules-right": ["tray", "network#speed", "network", "pulseaudio", "battery", "clock"],
 
     "hyprland/workspaces": {
         "format": "{name}",
@@ -22,87 +23,76 @@
         "on-scroll-down": "hyprctl dispatch workspace e+1"
     },
     "hyprland/window": {
-        "format": "\uf061 {initialTitle}",
-        "separate-outputs": true
-    },
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
-    "clock": {
-        "interval": 1,
-        "format": "\uf017 {:%H:%M:%S}",
-        "format-alt": "\uf133 {:%Y-%m-%d %H:%M:%S}",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "calendar": {
-            "mode"          : "month",
-            "mode-mon-col"  : 3,
-            "weeks-pos"     : "right",
-            "on-scroll"     : 1,
-            "format": {
-                "months":     "<span color='#ffead3'><b>{}</b></span>",
-                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-            }
-        },
-        "actions": {
-            "on-click-right": "mode",
-            "on-click-forward": "tz_up",
-            "on-click-backward": "tz_down",
-            "on-scroll-up": "shift_up",
-            "on-scroll-down": "shift_down"
+        "format": " {title}",
+        "separate-outputs": true,
+        "max-length": 50,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "󰈹 $1",
+            "(.*) - Visual Studio Code": "󰨞 $1",
+            "(.*) - vim": " $1",
+            "(.*) - nvim": " $1"
         }
     },
     "cpu": {
+        "format": "󰻠 {usage:2}%",
         "interval": 1,
-        "format": "\uf2db {usage:2}%",
-        "tooltip": true
+        "tooltip": true,
+        "tooltip-format": "CPU Usage: {usage}%\nLoad: {load}",
+        "max-length": 6,
+        "min-length": 6
     },
     "memory": {
+        "format": "󰍛 {used:3.1f}G",
         "interval": 1,
-        "format": "\uf538 {used:0.1f}G",
         "tooltip": true,
-        "tooltip-format": " RAM: {used:0.2f}G / {total:0.2f}G\nSwap: {swapUsed:0.2f}G / {swapTotal:0.2f}G"
+        "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G ({percentage}%)\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G",
+        "max-length": 8,
+        "min-length": 8
     },
-    "network": {
-        "interval": 1,
-        "format-wifi": "\uf1eb {essid}",
-        "format-ethernet": "\uf6ff {ifname}",
-        "format-linked": "\uf059 No IP ({ifname})",
-        "format-disconnected": "\uf071 Disconnected",
-        "tooltip-format": "{ifname} {ipaddr}/{cidr} via {gwaddr}",
-        "tooltip-format-wifi": "{ipaddr}/{cidr} via {gwaddr} ({signalStrength}%)"
+    "tray": {
+        "icon-size": 16,
+        "spacing": 6,
+        "show-passive-items": true
+    },
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%Y-%m-%d %H:%M:%S}",
+        "tooltip-format": "<span font='12'>{:%A, %B %d, %Y}</span>"
     },
     "network#speed": {
+        "format": "󰁞{bandwidthUpBytes:>} 󰁆{bandwidthDownBytes:>}",
         "interval": 1,
-        "format": "\uf0aa{bandwidthUpBytes:>} \uf0ab{bandwidthDownBytes:>}",
-        "tooltip-format": "Upload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}",
-        "max-length": 22,
-        "min-length": 22
+        "max-length": 18,
+        "min-length": 18
+    },
+    "network": {
+        "format-wifi": "󰖩 {essid}",
+        "format-ethernet": "󰈀 ",
+        "format-linked": "󰖪",
+        "format-disconnected": "󰖪",
+        "interval": 1,
+        "tooltip-format": "{ifname}: {ipaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%): {ipaddr}",
+        "on-click": "nm-connection-editor"
     },
     "battery": {
-		   "interval": 1,
-		   "states": {
-        	   	     "warning": 40,
-        		     "critical": 7
-		   },
-		   "format": "󱐌{capacity}%",
-           "format-discharging": "{power:02.2f}w {capacity}%",
-		   "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-		   "max-length": 25
-	},
-    "pulseaudio": {
-        "scroll-step": 5,
-        "format": "{icon} {volume:2}%",
-        "format-muted": "\uf6a9",
-        "format-bluetooth": "{icon}\uf294 {volume}%",
-        "format-bluetooth-muted": "\ufa69 {icon}\uf294",
-        "format-icons": {
-            "default": ["\uf026", "\uf027", "\uf028"]
+        "states": {
+            "warning": 30,
+            "critical": 15
         },
-        "on-click-right": "pavucontrol",
-        "ignored-sinks": ["AudioRelay Virtual Sink", "Recorder Sink"]
+        "interval": 1,
+        "format": "󰂄{capacity}%",
+        "format-discharging": "{power:02.2f}w {icon}{capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format": "{timeTo}"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "scroll-step": 5
     }
 }
