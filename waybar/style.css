@@ -1,0 +1,135 @@
+* {
+    font-family: "SF Pro Text";
+    font-weight: 400;
+    font-size: 13px;
+    text-shadow: none;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: none;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0.75);
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+window#waybar.hidden {
+    opacity: 0.3;
+}
+
+tooltip {
+    background: rgba(28, 28, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#tray,
+#battery,
+#mode,
+#window,
+#workspaces {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+}
+
+#workspaces {
+    /* background: rgba(255, 255, 255, 0.08); */
+    border-radius: 5px;
+    padding: 2px;
+    margin: 2px 6px;
+}
+
+#workspaces button {
+    border-radius: 6px;
+    border: none;
+    padding: 2px 6px;
+    margin: 1px 2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#workspaces button.empty {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+#workspaces button.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+#workspaces button.urgent {
+    background: rgba(255, 69, 58, 0.3);
+    color: #ff453a;
+}
+
+#mode {
+    background: rgba(255, 69, 58, 0.2);
+    color: #ff453a;
+}
+
+/* Module spacing */
+.modules-left > widget:first-child > * {
+    margin-left: 12px;
+}
+
+.modules-right > widget:last-child > * {
+    margin-right: 12px;
+}
+
+/* Make right modules more compact */
+.modules-right > widget > * {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 4px 3px;
+}
+
+/* Extra compact spacing for battery and clock */
+#battery,
+#clock {
+    padding: 4px 3px;
+    margin: 2px 0px;
+}
+
+/* Individual module styles with subtle hover effects */
+#clock:hover,
+#cpu:hover,
+#memory:hover,
+#network:hover,
+#pulseaudio:hover,
+#battery:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+#tray {
+    background: transparent;
+    margin: 2px 3px;
+    padding: 4px 4px;
+}
+
+#battery.warning {
+    color: #ff9f0a;
+}
+
+#battery.critical {
+    color: #ff453a;
+}

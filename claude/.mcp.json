@@ -1,0 +1,36 @@
+{
+    "mcpServers": {
+        "context7": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@upstash/context7-mcp",
+                "--api-key",
+                "YOUR_API_KEY"
+            ]
+        },
+        "tavily": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "tavily-mcp@0.1.2"
+            ],
+            "env": {
+                "TAVILY_API_KEY": "YOUR_API_KEY"
+            }
+        },
+        "paper_search_server": {
+            "command": "uv",
+            "args": [
+                "run",
+                "--directory",
+                ".claude/mcp/paper_search",
+                "-m",
+                "paper_search_mcp.server"
+            ],
+            "env": {
+                "SEMANTIC_SCHOLAR_API_KEY": ""
+            }
+        }
+    }
+}

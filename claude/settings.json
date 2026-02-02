@@ -1,0 +1,27 @@
+{
+    "hooks": {
+        "PreToolUse": [
+            {
+                "command": ".claude/hooks/pre-bash.sh",
+                "description": "Safety checks for bash commands",
+                "toolFilter": [
+                    "Bash"
+                ]
+            }
+        ],
+        "PostToolUse": [
+            {
+                "matcher": "Edit|Write",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": ".claude/hooks/post-write.sh"
+                    }
+                ]
+            }
+        ]
+    },
+    "contextFiles": [
+        "CLAUDE.md"
+    ]
+}
