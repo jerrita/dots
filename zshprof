@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+export PATH=~/.local/bin:$PATH
+
 export EDITOR=nvim
 
 alias vim=nvim
@@ -52,8 +54,7 @@ function nss
 # alias ssh="kitten ssh"
 # alias conda='micromamba'
 #
-source /usr/share/nvm/init-nvm.sh
-
+# source /usr/share/nvm/init-nvm.sh
 # export MAMBA_ROOT_PREFIX=/home/jerrita/.micromamba
 # eval "$(zoxide init zsh)"
 # eval "$(micromamba shell hook --shell zsh)"
